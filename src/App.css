@@ -1,8 +1,37 @@
-img{
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+  padding: 20px;
+}
+
+.card {
+  background-color: #1e1e1e;
+  border-radius: 10px;
+  padding: 20px;
+  width: 300px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  text-align: center;
+  color: #fff;
+}
+
+img {
   border-radius: 50%;
   object-fit: cover;
+  width: 100px;
+  height: 100px;
 }
-.contac{
+
+.contac {
   background-color: aqua;
   border: none;
+  padding: 8px 15px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+}
+.card h1 {
+  font-size: 24px;
+  margin: 10px 0;
 }
