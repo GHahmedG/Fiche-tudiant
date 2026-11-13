@@ -1,62 +1,46 @@
-import { useState } from 'react'
+import "./StudentCard.css";
 
-function StudentCard(props) {
-  const [coordonneesVisibles, setcoordonneesVisibles] = useState(false);
-
-  function basculerCoordonnees() {
-    setcoordonneesVisibles(!coordonneesVisibles);
-  }
-
+function StudentCard({
+  email,
+  nom,
+  prenom,
+  telephone,
+  filiere,
+  annee,
+  groupe,
+  ville,
+  image,
+  onSupprimer,
+  onModifier,
+}) {
   return (
     <div className="card">
-      <img src={props.image} alt="Photo de l'étudiant" />
-      <h1>Fiche Étudiant</h1>
-      
-      <p>
-        <strong>Nom & Prénom :</strong> {props.prenom} {props.nom}
-      </p>
-      
-      {coordonneesVisibles && (
-        <div className="coordonnees">
-          <p>
-            <strong>Email :</strong> {props.email}
-          </p>
-          <p>
-            <strong>Téléphone :</strong> {props.telephone}
-          </p>
+      <div className="card-header">
+        <img src={image} alt={`${prenom} ${nom}`} className="student-avatar" />
+        <div className="student-titles">
+          <h3>{prenom} {nom}</h3>
+          <span className="badge">{filiere}</span>
         </div>
-      )}
+      </div>
 
-      <p>
-        <strong>Filière :</strong> {props.filiere}
-      </p>
-      <p>
-        <strong>Année :</strong> {props.annee}
-      </p>
-      <p>
-        <strong>Groupe :</strong> {props.groupe}
-      </p>
-      <p>
-        <strong>Ville :</strong> {props.ville}
-      </p>
+      <div className="card-body">
+        <p><strong>Email :</strong> {email}</p>
+        <p><strong>Téléphone :</strong> {telephone}</p>
+        <p><strong>Année :</strong> {annee}</p>
+        <p><strong>Groupe :</strong> {groupe}</p>
+        <p><strong>Ville :</strong> {ville}</p>
+      </div>
 
-      <button onClick={basculerCoordonnees} className="contac">
-        {coordonneesVisibles ? "Masquer les coordonnées" : "Afficher les coordonnées"}
-      </button>
-
-      <a href={`mailto:${props.email}`} style={{ display: 'block', marginTop: '10px' }}>
-        <button className="contac">Contacter</button>
-      </a>
-
-      <button onClick={() => props.onModifier(props.email)} className="contac" style={{ marginTop: '5px' }}>
-        Modifier
-      </button>
-
-      <button onClick={() => props.onSupprimer(props.email)} className="contac" style={{ backgroundColor: '#ff4d4d', color: '#fff', marginTop: '5px' }}>
-        Supprimer
-      </button>
+      <div className="card-actions">
+        <button className="btn-modifier" onClick={() => onModifier(email)}>
+          Modifier
+        </button>
+        <button className="btn-supprimer" onClick={() => onSupprimer(email)}>
+          Supprimer
+        </button>
+      </div>
     </div>
-  )
+  );
 }
 
-export default StudentCard
+export default StudentCard;

@@ -1,0 +1,63 @@
+.formulaire {
+  max-width: 500px;
+  margin: 20px auto;
+  padding: 25px;
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+.formulaire form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.formulaire label {
+  font-weight: 600;
+  font-size: 14px;
+  color: #333;
+}
+.formulaire input[type="text"],
+.formulaire input[type="email"],
+.formulaire input[type="tel"],
+.formulaire input[type="date"],
+.formulaire input[type="file"],
+.formulaire select {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 14px;
+  box-sizing: border-box;
+  transition: border-color 0.2s;
+}
+.formulaire input:focus,
+.formulaire select:focus {
+  outline: none;
+  border-color: #4f46e5;
+  box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.1);
+}
+.formulaire button {
+  padding: 10px 15px;
+  border: none;
+  border-radius: 6px;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  margin-top: 5px;
+  transition: background-color 0.2s;
+}
+.formulaire button[type="submit"] {
+  background-color: #4f46e5;
+  color: white;
+}
+.formulaire button[type="submit"]:hover {
+  background-color: #4338ca;
+}
+.formulaire button[type="reset"] {
+  background-color: #e5e7eb;
+  color: #374151;
+}
+.formulaire button[type="reset"]:hover {
+  background-color: #d1d5db;
+}

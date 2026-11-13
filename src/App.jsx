@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import './App.css';
 import StudentCard from './components/StudentCard';
+import Studentform from './components/fichestudent';
 import dapho from './assets/da.png';
 
 function App() {
@@ -21,18 +22,11 @@ function App() {
   const [recherche, setRecherche] = useState("");
 
   function ajouterEtudiant() {
-    const nouvelEtudiant = {
-      nom: "Ben Salem",
-      prenom: "Yassine",
-      email: "yassine.bensalem@gmail.com",
-      telephone: "+216 44 444 444",
-      filiere: "Génie Logiciel et Systèmes d'Information",
-      annee: "2ème année",
-      groupe: "GLSI 1",
-      ville: "Sfax",
-      image: dapho,
+    const edutiantavceid = {
+      ...nouvelEtudiant,
+      id: Date.now(),
     };
-    setEtudiants([...etudiants, nouvelEtudiant]);
+    setEtudiants((anciensEtudiants) => [...anciensEtudiants, edutiantavceid]);
   }
 
   function supprimerEtudiant(email) {
@@ -62,26 +56,26 @@ function App() {
 
   return (
     <div className="container">
+      <StudentForm onAjouterEtudiant={ajouterEtudiant} />
+
       <div className="actions">
-        <button onClick={ajouterEtudiant}>+ Ajouter un étudiant</button>
         <input
           type="text"
           placeholder="Rechercher par nom, prénom ou filière..."
           value={recherche}
           onChange={(e) => setRecherche(e.target.value)}
-          style={{ marginLeft: '10px', padding: '8px', borderRadius: '5px', border: '1px solid #ccc' }}
         />
       </div>
 
       {etudiantsFiltres.map((etudiant) => (
         <StudentCard
-          key={etudiant.email}
+          key={etudiant.id || etudiant.email}
           email={etudiant.email}
           nom={etudiant.nom}
           prenom={etudiant.prenom}
           telephone={etudiant.telephone}
           filiere={etudiant.filiere}
-          annee={etudiant.annee}
+          annee={etudiant.anneeEtude}
           groupe={etudiant.groupe}
           ville={etudiant.ville}
           image={etudiant.image}
