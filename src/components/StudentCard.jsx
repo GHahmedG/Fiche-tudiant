@@ -1,5 +1,3 @@
-import "./StudentCard.css";
-
 function StudentCard({
   email,
   nom,
