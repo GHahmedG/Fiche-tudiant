@@ -7,6 +7,7 @@ import dapho from "./assets/da.png";
 function App() {
   const [etudiants, setEtudiants] = useState([
     {
+      id: 1,
       prenom: "random",
       nom: "kid",
       email: "randomkid@gmail.com",
@@ -19,6 +20,7 @@ function App() {
     },
   ]);
 
+  const [etudiantAModifier, setEtudiantAModifier] = useState(null);
   const [recherche, setRecherche] = useState("");
 
   function ajouterEtudiant(nouvelEtudiant) {
@@ -36,17 +38,19 @@ function App() {
     );
   }
 
-  function modifierEtudiant(email) {
-    const nouveauPrenom = prompt("Saisir le nouveau prénom : ");
-    if (nouveauPrenom !== null && nouveauPrenom.trim() !== "") {
-      setEtudiants((anciensEtudiants) =>
-        anciensEtudiants.map((etudiant) =>
-          etudiant.email === email
-            ? { ...etudiant, prenom: nouveauPrenom.trim() }
-            : etudiant
-        )
-      );
-    }
+  function modifierEtudiant(etudiant) {
+    setEtudiantAModifier(etudiant);
+  }
+
+  function enregistrerModification(etudiantModifie) {
+    setEtudiants((anciensEtudiants) =>
+      anciensEtudiants.map((etudiant) =>
+        etudiant.id === etudiantAModifier.id
+          ? { ...etudiantModifie, id: etudiant.id }
+          : etudiant
+      )
+    );
+    setEtudiantAModifier(null);
   }
 
   const etudiantsFiltres = etudiants.filter(
@@ -58,33 +62,33 @@ function App() {
 
   return (
     <div className="container">
-      <StudentForm onAjouterEtudiant={ajouterEtudiant} />
+      <StudentForm
+        key={etudiantAModifier ? etudiantAModifier.id : "nouveau"}
+        onAjouterEtudiant={ajouterEtudiant}
+        etudiantAModifier={etudiantAModifier}
+        onModifierEtudiant={enregistrerModification}
+      />
 
       <div className="actions">
         <input
           type="text"
+          className="search-input"
           placeholder="Rechercher par nom, prénom ou filière..."
           value={recherche}
           onChange={(e) => setRecherche(e.target.value)}
         />
       </div>
 
-      {etudiantsFiltres.map((etudiant) => (
-        <StudentCard
-          key={etudiant.id || etudiant.email}
-          email={etudiant.email}
-          nom={etudiant.nom}
-          prenom={etudiant.prenom}
-          telephone={etudiant.telephone}
-          filiere={etudiant.filiere}
-          annee={etudiant.anneeEtude}
-          groupe={etudiant.groupe}
-          ville={etudiant.ville}
-          image={etudiant.image}
-          onSupprimer={supprimerEtudiant}
-          onModifier={modifierEtudiant}
-        />
-      ))}
+      <div className="cards-grid">
+        {etudiantsFiltres.map((etudiant) => (
+          <StudentCard
+            key={etudiant.id}
+            etudiant={etudiant}
+            onSupprimer={supprimerEtudiant}
+            onModifier={modifierEtudiant}
+          />
+        ))}
+      </div>
     </div>
   );
 }

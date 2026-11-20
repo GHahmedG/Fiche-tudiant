@@ -1,63 +1,98 @@
 .formulaire {
-  max-width: 500px;
-  margin: 20px auto;
-  padding: 25px;
+  width: 100%;
+  max-width: 420px;
+  padding: 24px;
   background: #ffffff;
-  border-radius: 12px;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #1f2937;
+  border-radius: 14px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+  box-sizing: border-box;
 }
-.formulaire form {
+
+.formulaire h2 {
+  margin: 0 0 16px;
+  font-size: 20px;
+  color: #111827;
+  text-align: center;
+}
+
+.student-form {
   display: flex;
   flex-direction: column;
   gap: 12px;
 }
-.formulaire label {
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.form-group label {
   font-weight: 600;
-  font-size: 14px;
-  color: #333;
+  font-size: 13.5px;
+  color: #374151;
+  text-align: center;
 }
-.formulaire input[type="text"],
-.formulaire input[type="email"],
-.formulaire input[type="tel"],
-.formulaire input[type="date"],
-.formulaire input[type="file"],
-.formulaire select {
+
+.form-group input[type="text"],
+.form-group input[type="email"],
+.form-group input[type="tel"],
+.form-group input[type="date"],
+.form-group input[type="file"],
+.form-group select {
   width: 100%;
-  padding: 10px 12px;
-  border: 1px solid #ccc;
-  border-radius: 6px;
+  padding: 9px 12px;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
   font-size: 14px;
+  background-color: #f9fafb;
+  color: #111827;
   box-sizing: border-box;
-  transition: border-color 0.2s;
 }
-.formulaire input:focus,
-.formulaire select:focus {
+
+.form-group input:focus,
+.form-group select:focus {
   outline: none;
   border-color: #4f46e5;
-  box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.1);
+  background-color: #ffffff;
+  box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.15);
 }
-.formulaire button {
-  padding: 10px 15px;
+
+.error-msg {
+  color: #dc2626;
+  font-size: 12px;
+  margin: 2px 0 0;
+  text-align: left;
+}
+
+.btn-submit {
+  padding: 10px 16px;
   border: none;
-  border-radius: 6px;
-  font-size: 15px;
+  border-radius: 8px;
+  font-size: 14.5px;
   font-weight: 600;
   cursor: pointer;
-  margin-top: 5px;
-  transition: background-color 0.2s;
-}
-.formulaire button[type="submit"] {
   background-color: #4f46e5;
-  color: white;
+  color: #ffffff;
+  margin-top: 4px;
 }
-.formulaire button[type="submit"]:hover {
+
+.btn-submit:hover {
   background-color: #4338ca;
 }
-.formulaire button[type="reset"] {
+
+.student-form button[type="reset"] {
+  padding: 9px 16px;
+  border: none;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
   background-color: #e5e7eb;
   color: #374151;
 }
-.formulaire button[type="reset"]:hover {
+
+.student-form button[type="reset"]:hover {
   background-color: #d1d5db;
 }
